@@ -7,3 +7,10 @@ export const CreateCategorySchema = zod.object({
 });
 
 export type CreateCategorySchemaType = zod.infer<typeof CreateCategorySchema>;
+
+export const DeleteCategorySchema = zod.object({
+  name: zod.string().min(3).max(20),
+  type: zod.enum(["income", "expense"]),
+});
+
+export type DeleteCategorySchemaType = zod.infer<typeof DeleteCategorySchema>;

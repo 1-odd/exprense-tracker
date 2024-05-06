@@ -46,9 +46,10 @@ import { useTheme } from "next-themes";
 interface Props {
   type: TransactionType;
   onSuccessCallback : (category : Category)=> void;
+  trigger? : React.ReactNode; 
 }
 
-function CreateCategoryDialog({ type , onSuccessCallback }: Props) {
+function CreateCategoryDialog({ type , onSuccessCallback , trigger }: Props) {
 
   const [open, setOpen] = React.useState(false);
 
@@ -99,13 +100,13 @@ function CreateCategoryDialog({ type , onSuccessCallback }: Props) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button
+        { trigger? trigger: <Button
           variant={"ghost"}
           className=" flex border-separate items-center justify-start rounded-none border-b px-3 py-3 text-muted-foreground"
         >
           <PlusSquare className=" mr-2 h-4 w-4" />
           Create a new category
-        </Button>
+        </Button>}
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
